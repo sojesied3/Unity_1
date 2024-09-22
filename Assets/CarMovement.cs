@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,8 @@ public class CarMovement : MonoBehaviour
     public GameObject frontright_wheel;
     public GameObject backleft_wheel;
     public GameObject backright_wheel;
+    public GameObject LeftTurn;
+    public GameObject RightTurn;
     float a;
     float b = 0;
     float c = 5;
@@ -26,6 +29,10 @@ public class CarMovement : MonoBehaviour
         float x = this.transform.position.x;
         float y = this.transform.position.y;
         float z = this.transform.position.z;
+        float qX = this.transform.localRotation.x;
+        float qY = this.transform.localRotation.y;
+        float qZ = this.transform.localRotation.z;
+
         if (!(Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S)))
         {
             if (Input.GetKey(KeyCode.W))
@@ -60,23 +67,25 @@ public class CarMovement : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.A))
             {
-                frontleft_wheel.transform.rotation = Quaternion.Euler(0, -30, 0);
-                frontright_wheel.transform.rotation = Quaternion.Euler(0, -30, 0);
+                this.transform.RotateAround(LeftTurn.transform.position, Vector3.down, 1);
+                frontleft_wheel.transform.localRotation = Quaternion.Euler(qX, -30, 0);
+                frontright_wheel.transform.localRotation = Quaternion.Euler(qX, -30, 0);
             }
             else if (Input.GetKeyUp(KeyCode.A))
             {
-                frontleft_wheel.transform.rotation = Quaternion.Euler(0, 0, 0);
-                frontright_wheel.transform.rotation = Quaternion.Euler(0, 0, 0);
+                frontleft_wheel.transform.localRotation = Quaternion.Euler(qX, 0, 0);
+                frontright_wheel.transform.localRotation = Quaternion.Euler(qX, 0, 0);
             }
             else if (Input.GetKey(KeyCode.D))
             {
-                frontleft_wheel.transform.rotation = Quaternion.Euler(0, 30, 0);
-                frontright_wheel.transform.rotation = Quaternion.Euler(0, 30, 0);
+                this.transform.RotateAround(RightTurn.transform.position, Vector3.up, 1);
+                frontleft_wheel.transform.localRotation = Quaternion.Euler(qX, 30, 0);
+                frontright_wheel.transform.localRotation = Quaternion.Euler(qX, 30, 0);
             }
             else if (Input.GetKeyUp(KeyCode.D))
             {
-                frontleft_wheel.transform.rotation = Quaternion.Euler(0, 0, 0);
-                frontright_wheel.transform.rotation = Quaternion.Euler(0, 0, 0);
+                frontleft_wheel.transform.localRotation = Quaternion.Euler(qX, 0, 0);
+                frontright_wheel.transform.localRotation = Quaternion.Euler(qX, 0, 0);
             }
         }
         else
