@@ -41,7 +41,6 @@ public class CarMovement : MonoBehaviour
     void ShowAnyPosition(GameObject obj)
     {
         Debug.Log(obj.transform.position);
-
     }
 
     // Start is called before the first frame update
@@ -58,7 +57,7 @@ public class CarMovement : MonoBehaviour
         float x = this.transform.position.x;
         float y = this.transform.position.y;
         float z = this.transform.position.z;
-        ShowPosition();
+        /*ShowPosition();
         ShowAnyPosition(this.gameObject);
         ShowAnyPosition(frontleft_wheel);
         ShowAnyPosition(frontright_wheel);
@@ -67,7 +66,7 @@ public class CarMovement : MonoBehaviour
         Debug.Log("result =" + result);
         float result2 = AddNumber(x, y);
         Debug.Log("result =" + result2);
-        ShowPosition();
+        ShowPosition();*/
         if (x == y)
         {
 
@@ -96,7 +95,7 @@ public class CarMovement : MonoBehaviour
 
         else
         {
-            this.transform.Translate(0, 0, 0);
+            this.transform.Translate(x, 0, 0);
             frontleft_wheel.transform.Rotate(0, 0, 0);
             frontright_wheel.transform.Rotate(0, 0, 0);
             backleft_wheel.transform.Rotate(0, 0, 0);
@@ -105,6 +104,7 @@ public class CarMovement : MonoBehaviour
 
         if (!(Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)))
         {
+            Debug.Log(frontleft_wheel.transform.localRotation.x);
             float qX = frontleft_wheel.transform.localRotation.x;
             float qY = frontleft_wheel.transform.localRotation.y;
             float qZ = frontleft_wheel.transform.localRotation.z;
