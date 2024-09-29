@@ -29,9 +29,6 @@ public class CarMovement : MonoBehaviour
         float x = this.transform.position.x;
         float y = this.transform.position.y;
         float z = this.transform.position.z;
-        float qX = this.transform.localRotation.x;
-        float qY = this.transform.localRotation.y;
-        float qZ = this.transform.localRotation.z;
 
         if (!(Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S)))
         {
@@ -54,6 +51,7 @@ public class CarMovement : MonoBehaviour
                 backright_wheel.transform.Rotate(-1f, 0, 0);
             }
         }
+
         else
         {
             this.transform.Translate(0, 0, 0);
@@ -65,6 +63,9 @@ public class CarMovement : MonoBehaviour
 
         if (!(Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)))
         {
+            float qX = frontleft_wheel.transform.localRotation.x;
+            float qY = frontleft_wheel.transform.localRotation.y;
+            float qZ = frontleft_wheel.transform.localRotation.z;
             if (Input.GetKey(KeyCode.A))
             {
                 this.transform.RotateAround(LeftTurn.transform.position, Vector3.down, 1);
