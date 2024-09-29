@@ -14,6 +14,35 @@ public class CarMovement : MonoBehaviour
     float a;
     float b = 0;
     float c = 5;
+    void ShowPosition()
+    {
+        Debug.Log(this.transform.position);
+    }
+    int AddNumber(int i, int j)
+    {
+        int k = i + j;
+        return k;
+    }
+    float AddNumber(float i, float j)
+    {
+        float k = i + j;
+        return k;
+    }
+    double AddNumber(double i, double j)
+    {
+        double k = i + j;
+        return k;
+    }
+    string AddNumber(string i, string j)
+    {
+        string k = i + j;
+        return k;
+    }
+    void ShowAnyPosition(GameObject obj)
+    {
+        Debug.Log(obj.transform.position);
+
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +58,20 @@ public class CarMovement : MonoBehaviour
         float x = this.transform.position.x;
         float y = this.transform.position.y;
         float z = this.transform.position.z;
+        ShowPosition();
+        ShowAnyPosition(this.gameObject);
+        ShowAnyPosition(frontleft_wheel);
+        ShowAnyPosition(frontright_wheel);
+        AddNumber(1, 2);
+        int result = AddNumber(3, 4);
+        Debug.Log("result =" + result);
+        float result2 = AddNumber(x, y);
+        Debug.Log("result =" + result2);
+        ShowPosition();
+        if (x == y)
+        {
 
+        }
         if (!(Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S)))
         {
             if (Input.GetKey(KeyCode.W))
