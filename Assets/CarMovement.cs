@@ -13,7 +13,8 @@ public class CarMovement : MonoBehaviour
     public GameObject RightTurn;
     float a;
     float b = 0;
-    float c = 5;
+    float c = 3;
+    float pi = 3.14f;
     void ShowPosition()
     {
         Debug.Log(this.transform.position);
@@ -40,16 +41,41 @@ public class CarMovement : MonoBehaviour
     }
     void ShowAnyPosition(GameObject obj)
     {
-        Debug.Log(obj.transform.position);
+        //Debug.Log(obj.transform.position);
     }
-
+    float Circumference(float r)
+    {
+        float c = 2 * pi * r;
+        return c;
+    }
+    float SquareArea(float a, float b)
+    {
+        float s = a * b;
+        return s;
+    }
+    float SquareArea(float a)
+    {
+        float s = a * a;
+        float t = Mathf.Pow(a, 2);
+        return s;
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Collision" + collision.gameObject.name);
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        Debug.Log("Exit" + collision.gameObject.name);
+    }
     // Start is called before the first frame update
     void Start()
     {
 
     }
+    
+    
 
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -67,6 +93,13 @@ public class CarMovement : MonoBehaviour
         float result2 = AddNumber(x, y);
         Debug.Log("result =" + result2);
         ShowPosition();*/
+        /*float result = Circumference(3);
+        Debug.Log("Result =" + result);*/
+        /*float result2 = SquareArea(2, 3);
+        Debug.Log("Result =" + result2);*/
+        //float result3 = SquareArea(2);
+        //Debug.Log("ResultArea =" + SquareArea(AddNumber(2, 3)));
+
         if (x == y)
         {
 
@@ -104,7 +137,7 @@ public class CarMovement : MonoBehaviour
 
         if (!(Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)))
         {
-            Debug.Log(frontleft_wheel.transform.localRotation.x);
+            //Debug.Log(frontleft_wheel.transform.localRotation.x);
             float qX = frontleft_wheel.transform.localRotation.x;
             float qY = frontleft_wheel.transform.localRotation.y;
             float qZ = frontleft_wheel.transform.localRotation.z;
