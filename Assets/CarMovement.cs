@@ -11,10 +11,13 @@ public class CarMovement : MonoBehaviour
     public GameObject backright_wheel;
     public GameObject LeftTurn;
     public GameObject RightTurn;
+    public GameObject GoldCoin;
     float a;
     float b = 0;
     float c = 3;
     float pi = 3.14f;
+    int points;
+    int tentpoints;
     void ShowPosition()
     {
         Debug.Log(this.transform.position);
@@ -59,22 +62,32 @@ public class CarMovement : MonoBehaviour
         float t = Mathf.Pow(a, 2);
         return s;
     }
-    private void OnCollisionEnter(Collision collision)
+    /*private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("Collision" + collision.gameObject.name);
     }
     private void OnCollisionExit(Collision collision)
     {
         Debug.Log("Exit" + collision.gameObject.name);
+    }*/
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Collected: " + collision.gameObject.name);
+    }
+    public void AddCoin()
+    {
+        tentpoints = points;
+        points = tentpoints + 1;
+        Debug.Log("Points: " + points);
     }
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
     
     
-
     
     // Update is called once per frame
     void Update()
@@ -100,7 +113,8 @@ public class CarMovement : MonoBehaviour
         //float result3 = SquareArea(2);
         //Debug.Log("ResultArea =" + SquareArea(AddNumber(2, 3)));
 
-        if (x == y)
+
+        
         {
 
         }
