@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class CoinHitbox : MonoBehaviour
 {
-    public GameObject MultipleSlash;
+    public ParticleSystem MultipleSlash;
     bool isUpward;
     bool isDownward;
+    
     void CoinStageUp()
     {
         this.transform.Translate(0, 0.2f, 0);
@@ -24,6 +25,7 @@ public class CoinHitbox : MonoBehaviour
         {
             a = collision.gameObject.GetComponentInParent<CarMovement>();
             a.AddCoin();
+            MultipleSlash.Play();
             this.gameObject.SetActive(false);
             //MultipleSlash.SetActive(false);
         }
